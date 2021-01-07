@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[35,)" 
+license="All rights reserved"
+
+[[mods]]
+modId="pexiekitchen"
+version="1.0" 
+displayName="SantaPexie's Kitchen Mod"
+credits="Thanks for my family and friends for supporting me"
+authors="SantaPexie for making the mod"
+description='''
+It adds different kitchen blocks and foods to the game!
+'''
+
+[[dependencies.pexiekitchen]] 
+    modId="forge"
+    mandatory=true
+    versionRange="[35,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.pexiekitchen]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4,1.17)"
+    ordering="NONE"
+    side="BOTH"
