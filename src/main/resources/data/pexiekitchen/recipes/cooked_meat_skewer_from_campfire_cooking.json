@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "pexiekitchen:raw_meat_skewer"
+  },
+  "result": "pexiekitchen:cooked_meat_skewer",
+  "experience": 0.35,
+  "cookingtime": 200
+}

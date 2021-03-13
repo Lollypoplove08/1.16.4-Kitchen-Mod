@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "pexiekitchen:paper_bag"
+    },
+    "X": {
+      "item": "pexiekitchen:flour"
+    }
+  },
+  "result": {
+    "item": "pexiekitchen:paper_bag_flour",
+    "count": 1
+  }
+}

@@ -3,6 +3,7 @@ package com.santapexie.kitchenmod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.santapexie.kitchenmod.core.init.BlockInit;
 import com.santapexie.kitchenmod.core.init.ItemInit;
 
 import net.minecraftforge.common.MinecraftForge;
@@ -21,6 +22,7 @@ public class KitchenMod {
        bus.addListener(this::setup);
     	
        ItemInit.ITEMS.register(bus);
+       BlockInit.BLOCKS.register(bus);
 
          MinecraftForge.EVENT_BUS.register(this);
     }

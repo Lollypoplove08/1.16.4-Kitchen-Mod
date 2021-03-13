@@ -3,5 +3,13 @@
 	"item.pexiekitchen.cooked_flesh": "Cooked Flesh",
 	"item.pexiekitchen.fish_stew": "Fish Stew",
 	"item.pexiekitchen.apple_pie": "Apple Pie",
-	"item.pexiekitchen.flour": "Flour"
+	"item.pexiekitchen.flour": "Flour",
+	"item.pexiekitchen.cooked_pizza": "Cooked Pizza",
+	"item.pexiekitchen.uncooked_pizza": "Uncooked Pizza",
+	"item.pexiekitchen.cupcake": "Cupcake",
+	"item.pexiekitchen.raw_meat_skewer": "Raw Meat Skewer",
+	"item.pexiekitchen.cooked_meat_skewer": "Cooked Meat Skewer",
+	"item.pexiekitchen.paper_bag": "Paper Bag",
+	"item.pexiekitchen.paper_bag_flour": "Flour Bag",
+	"block.pexiekitchen.separator": "Separator"
 }

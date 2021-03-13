@@ -1,0 +1,9 @@
+{
+   "type": "minecraft:smelting",
+   "ingredient": {
+   "item": "pexiekitchen:raw_meat_skewer"
+   },
+   "result": "pexiekitchen:cooked_meat_skewer",
+   "experience": 5.0,
+   "cookingtime": 200
+   }

@@ -1,0 +1,42 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "pexiekitchen:items/cupcake1"
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"pexiekitchen:count": 0.0
+			},
+			"model": "pexiekitchen:item/cupcake"
+		},
+		
+		{
+			"predicate": {
+				"pexiekitchen:count": 0.25
+			},
+			"model": "pexiekitchen:item/cupcake"
+		},
+		
+		{
+			"predicate": {
+				"pexiekitchen:count": 0.5
+			},
+			"model": "pexiekitchen:item/cupcake/cupcake2"
+		},
+		
+		{
+			"predicate": {
+				"pexiekitchen:count": 0.75
+			},
+			"model": "pexiekitchen:item/cupcake/cupcake3"
+		},
+		
+		{
+			"predicate": {
+				"pexiekitchen:count": 1.0
+			},
+			"model": "pexiekitchen:item/cupcake/cupcake4"
+		}
+	]
+}
