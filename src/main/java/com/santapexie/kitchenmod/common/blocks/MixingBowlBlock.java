@@ -27,7 +27,6 @@ public class MixingBowlBlock extends BaseHorizontalBlock {
 	private static HashSet<Item> canMix = new HashSet<Item>();
 	public static void main(String[] args) {
         getList();
-        main(args);
     }
 
 
