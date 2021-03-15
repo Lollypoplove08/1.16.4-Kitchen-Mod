@@ -7,6 +7,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
@@ -70,5 +71,8 @@ public class ItemInit {
 	// Block Items
 	public static final RegistryObject<BlockItem> SEPARATOR = ITEMS.register("separator",
 			() -> new BlockItem(BlockInit.SEPARATOR.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS).maxStackSize(64)));
+	
+	public static final RegistryObject<BlockItem> MIXING_BOWL = ITEMS.register("mixing_bowl",
+			() -> new BlockItem(BlockInit.MIXING_BOWL.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS).maxStackSize(64)));
 
 }

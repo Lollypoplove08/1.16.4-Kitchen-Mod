@@ -1,6 +1,7 @@
 package com.santapexie.kitchenmod.core.init;
 
 import com.santapexie.kitchenmod.KitchenMod;
+import com.santapexie.kitchenmod.common.blocks.MixingBowlBlock;
 import com.santapexie.kitchenmod.common.blocks.SeparatorBlock;
 
 import net.minecraft.block.AbstractBlock;
@@ -22,4 +23,10 @@ public class BlockInit {
 					() -> new SeparatorBlock(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.GRAY)
 							.hardnessAndResistance(3.5f, 3.5f).harvestTool(ToolType.PICKAXE).harvestLevel(0)
 							.sound(SoundType.STONE).setRequiresTool()));
+	
+	public static final RegistryObject<MixingBowlBlock> MIXING_BOWL = BLOCKS
+			.register("mixing_bowl",
+					() -> new MixingBowlBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD)
+							.hardnessAndResistance(3.5f, 3.5f).harvestTool(ToolType.AXE).harvestLevel(0)
+							.sound(SoundType.WOOD)));
 }

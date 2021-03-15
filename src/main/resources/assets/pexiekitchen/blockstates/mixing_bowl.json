@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "pexiekitchen:block/mixing_bowl" },
+        "facing=south": { "model": "pexiekitchen:block/mixing_bowl", "y": 180 },
+        "facing=west":  { "model": "pexiekitchen:block/mixing_bowl", "y": 270 },
+        "facing=east":  { "model": "pexiekitchen:block/mixing_bowl", "y": 90 }
+    }
+}

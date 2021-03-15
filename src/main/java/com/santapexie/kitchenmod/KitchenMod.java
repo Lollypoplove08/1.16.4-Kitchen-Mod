@@ -3,6 +3,7 @@ package com.santapexie.kitchenmod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.santapexie.kitchenmod.common.blocks.MixingBowlBlock;
 import com.santapexie.kitchenmod.core.init.BlockInit;
 import com.santapexie.kitchenmod.core.init.ItemInit;
 
