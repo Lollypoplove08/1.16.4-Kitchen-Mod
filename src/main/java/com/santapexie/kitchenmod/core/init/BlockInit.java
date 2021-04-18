@@ -14,7 +14,9 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class BlockInit {
+public class BlockInit  {
+
+
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
 			KitchenMod.MOD_ID);
 
@@ -26,7 +28,8 @@ public class BlockInit {
 	
 	public static final RegistryObject<MixingBowlBlock> MIXING_BOWL = BLOCKS
 			.register("mixing_bowl",
-					() -> new MixingBowlBlock(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD)
-							.hardnessAndResistance(3.5f, 3.5f).harvestTool(ToolType.AXE).harvestLevel(0)
-							.sound(SoundType.WOOD)));
+					() -> new MixingBowlBlock(AbstractBlock.Properties.create(Material.CLAY, MaterialColor.CLAY)
+							.hardnessAndResistance(1.5f, 1.5f).sound(SoundType.WOOD)));
+	
+
 }

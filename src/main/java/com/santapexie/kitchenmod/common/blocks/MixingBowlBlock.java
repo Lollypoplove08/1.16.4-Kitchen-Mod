@@ -3,14 +3,20 @@ package com.santapexie.kitchenmod.common.blocks;
 import java.util.HashSet;
 import java.util.stream.Stream;
 
+import com.santapexie.kitchenmod.common.tiles.MixingBowlBlockTileEntity;
 import com.santapexie.kitchenmod.core.init.ItemInit;
+import com.santapexie.kitchenmod.core.init.TileEntityTypesInit;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -22,54 +28,148 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class MixingBowlBlock extends BaseHorizontalBlock {
+public class MixingBowlBlock extends Block {
+	
+	
 
-	private static HashSet<Item> canMix = new HashSet<Item>();
-	public static void main(String[] args) {
-        getList();
-    }
+	private MixingBowlBlockTileEntity te;
+	public static MixingBowlBlock C1;
 
+	void Awake() {
+		C1 = this;
+	}
 
-	public static HashSet<Item> getList() {
+	private final static HashSet<Item> canMix = new HashSet<Item>();
+	private final static HashSet<Item> canLiquid = new HashSet<Item>();
+	private final static HashSet<Item> canBucket = new HashSet<Item>();
+
+	public void addCanLiquid(final Item canMix) {
+
+	}
+
+	public void addCanBucket(final Item canBucket) {
+
+	}
+
+	public static HashSet<Item> getCanLiquid() {
+		canLiquid.add(Items.MILK_BUCKET);
+		canLiquid.add(Items.WATER_BUCKET);
+		return canLiquid;
+	}
+
+	public static HashSet<Item> getCanBucket() {
+		canBucket.add(Items.BUCKET);
+		return canBucket;
+	}
+
+	public static HashSet<Item> getList1() {
+		return canLiquid;
+	}
+
+	public static HashSet<Item> getList2() {
+		return canBucket;
+	}
+
+	public void addCanMix(final Item canMix) {
+
+	}
+
+	public static HashSet<Item> getCanMix() {
 		canMix.add(ItemInit.FLOUR.get());
+		canMix.add(ItemInit.DOUGH.get());
+		canMix.add(Items.EGG);
 		return canMix;
 	}
 
-	public MixingBowlBlock(AbstractBlock.Properties properties) {
+	public static HashSet<Item> getList() {
+		return canMix;
+	}
+
+	public MixingBowlBlock(Properties properties) {
 		super(properties);
-		runCalculation(Stream.of(Block.makeCuboidShape(1, 0, 1, 15, 2, 15), Block.makeCuboidShape(0, 0, 0, 16, 16, 1),
-				Block.makeCuboidShape(0, 0, 1, 1, 16, 16), Block.makeCuboidShape(15, 0, 1, 16, 16, 16),
-				Block.makeCuboidShape(1, 0, 15, 15, 16, 16)).reduce((v1, v2) -> {
-					return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);
-				}).get());
+		
 	}
 
-	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return SHAPES.get(this).get(state.get(HORIZONTAL_FACING));
+	
 
-	}
-
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "deprecation", "static-access" })
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
 			Hand handIn, BlockRayTraceResult hit) {
-		ItemStack itemstack = player.getHeldItem(handIn);
-		if(handIn.MAIN_HAND == handIn) {
-		if(!worldIn.isRemote) {
-			if (player.inventory.getCurrentItem() != null) {
-				if (canMix.contains(itemstack.getItem())) {
-					player.getHeldItemMainhand().shrink(1);
+		if (player.inventory.getCurrentItem().getItem() != ItemInit.WOODEN_SPOON.get()) {
+			ItemStack itemstack = player.getHeldItem(handIn);
+			TileEntity te = worldIn.getTileEntity(pos);
+			if (handIn.MAIN_HAND == handIn) {
+				if (!worldIn.isRemote) {
+					if (player.isSneaking()) {
+						System.out.println("U have snuk");
+						if (player.getHeldItemMainhand().getItem() == Items.BUCKET) {
+							System.out.println("bucket");
+							if (te instanceof MixingBowlBlockTileEntity) {
+								System.out.println("sfsd");
+								((MixingBowlBlockTileEntity) te).removeLatestItem(player, worldIn, pos, handIn);
+							}
+						} else {
+							if (te instanceof MixingBowlBlockTileEntity) {
+								System.out.println("LOO");
+								((MixingBowlBlockTileEntity) te).removeLatestLiquid(player, worldIn, pos, handIn);
+							}
+						}
+
+					}
+					if (player.inventory.getCurrentItem() != null) {
+						if (player.getHeldItemMainhand().getItem() == Items.MILK_BUCKET) {
+							if (te instanceof MixingBowlBlockTileEntity) {
+
+								((MixingBowlBlockTileEntity) te).addLiquidInventory(player, handIn);
+							}
+						}
+
+						else if (getCanMix().contains(itemstack.getItem())) {
+							if (te instanceof MixingBowlBlockTileEntity) {
+
+								((MixingBowlBlockTileEntity) te).addItemInventory(player, handIn);
+							}
+
+						} else {
+							return ActionResultType.PASS;
+						}
+					} else {
+						return ActionResultType.PASS;
+					}
+				} else {
+					return ActionResultType.PASS;
 				}
-			      
-	    		else {
-	    			return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
-	    		}
-	    	}
+				return ActionResultType.SUCCESS;
+			}
+		} else {
+
 		}
-			return ActionResultType.SUCCESS;
+
+		return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+	}
+
+	@SuppressWarnings("deprecation")
+	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+		if (!state.isIn(newState.getBlock())) {
+			TileEntity tileentity = worldIn.getTileEntity(pos);
+			if (tileentity instanceof IInventory) {
+				InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
+				worldIn.updateComparatorOutputLevel(pos, this);
+			}
+
+			super.onReplaced(state, worldIn, pos, newState, isMoving);
 		}
-		return super.onBlockActivated(state,worldIn,pos,player,handIn,hit);
-}
+	}
+
+	@Override
+	public boolean hasTileEntity(BlockState state) {
+		return true;
+	}
+
+	@Override
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+		return TileEntityTypesInit.MIXING_BOWL.get().create();
+	}
 
 }

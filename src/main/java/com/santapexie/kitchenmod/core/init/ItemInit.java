@@ -67,6 +67,9 @@ public class ItemInit {
 
 	public static final RegistryObject<FlourPaperBag> FLOUR_PAPER_BAG = ITEMS.register("paper_bag_flour",
 			() -> new FlourPaperBag(new Item.Properties().group(ItemGroup.MISC).maxStackSize(16)));
+	
+	public static final RegistryObject<Item> WOODEN_SPOON = ITEMS.register("wooden_spoon",
+			() -> new Item(new Item.Properties().group(ItemGroup.MISC).maxStackSize(1)));
 
 	// Block Items
 	public static final RegistryObject<BlockItem> SEPARATOR = ITEMS.register("separator",
