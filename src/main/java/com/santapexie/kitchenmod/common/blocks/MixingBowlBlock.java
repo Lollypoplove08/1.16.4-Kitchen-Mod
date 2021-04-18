@@ -16,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -30,7 +31,7 @@ import net.minecraft.world.World;
 
 public class MixingBowlBlock extends Block {
 	
-	
+	public static final IntegerProperty LEVEL = IntegerProperty.create("level", 0, 12);
 
 	private MixingBowlBlockTileEntity te;
 	public static MixingBowlBlock C1;
@@ -87,7 +88,7 @@ public class MixingBowlBlock extends Block {
 
 	public MixingBowlBlock(Properties properties) {
 		super(properties);
-		
+		this.setDefaultState(this.stateContainer.getBaseState().with(LEVEL, Integer.valueOf(0)));
 	}
 
 	
